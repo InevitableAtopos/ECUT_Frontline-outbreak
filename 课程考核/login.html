@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录页</title>
+    <link rel="icon" href="./image/icon.ico">
+    <style>
+        body{
+            min-width: 1518px;
+            width: 100%;
+            background: url(./image/login_background.jpg);
+        }       
+        .a1{
+            width: 500px;
+            height: 550px;
+            background-color: transparent;
+            border-radius: 30px;
+            text-align: center;
+            /*实现导航栏的水平居中*/
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        h1{
+            margin-top: 100px;
+        }
+        .home{
+            text-decoration: none;
+            padding: 5px;
+        }
+        .home:hover{
+                color: blanchedalmond;
+        }
+        .register:hover{
+            color: blanchedalmond;
+        }
+        table{
+            margin: auto;
+            left: 0;
+            right: 0;
+            border-collapse: separate;
+            border-spacing: 5px 20px;
+        }
+
+        tr input{
+            width: 200px;
+        }
+        .r1{
+            width: 200px;
+        }
+        .r1 span{
+            padding-top: 1px;
+            padding-bottom: 3px;
+            font-size: 12px;
+            background-color: white;
+        }
+        .r2{
+            width: 138px;
+        }
+    </style>
+</head>
+<body>
+    <div class="a1">
+        <h1>用户登录</h1>
+        <form action="../index.html" method="post" onsubmit="return check2();">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="email">用户名：</label></td>
+                        <td class="r1"><input class="r2" type="text" name="email" id="email" /><span>@163.com</span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="pwd">密码：</label></td>
+                        <td><input type="password" name="pwd" id="pwd" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="repwd">确认密码：</label></td>
+                        <td><input type="password" name="repwd" id="repwd" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <input type="submit" value="登录">
+                <input type="reset" value="重填">
+            </p>
+            <p>
+                <a class="register" href="./register.html">未有账户，点此注册</a>
+            </p>
+            <p>
+                <a class="home" href="../index.html">回到首页</a>
+            </p>
+        </form>
+    </div>
+    <script>
+        function check2(){
+            if (email.value.length==0) {
+                alert('用户名不能为空！');
+                return false;
+            }
+            else if (!email.value.match(/^[a-zA-Z][a-zA-Z0-9_]{5,17}/)){
+                alert("用户名由6～18个字符组成，可使用字母、数字、下划线，需要以字母开头。");
+                return false;
+            }
+            else if (pwd.value.length==0) {
+                alert('密码不能为空！');
+                return false;
+            }
+            else if(!pwd.value.match(/[a-zA-Z]+/) || !pwd.value.match(/[0-9]+/) || !repwd.value.match(/[a-zA-Z]+/) || !repwd.value.match(/[0-9]+/)){
+                alert('密码由8-16个字符组成，需包含字母和数字。');
+                return false;
+            }
+            else if(pwd.value!=repwd.value){
+                alert('两次输入的密码不一致，请重新输入！');
+                return false;
+            }
+            else{
+                alert('登录成功~');
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
